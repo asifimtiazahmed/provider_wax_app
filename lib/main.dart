@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: ,
+      create: (),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Wax App',
