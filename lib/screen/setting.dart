@@ -55,9 +55,13 @@ class Settings extends StatelessWidget {
                           'Swix',
                           style: TextStyle(color: Theme.of(context).accentColor),
                         ),
-                        selected: false,
+                        selected: (settingsProvider.waxLines.contains('Swix')) ? true : false,
                         onSelected: (bool value){
-                          //TODO: Something here
+                          if (value == true){
+                             settingsProvider.addWaxLine('Swix');
+                          } else {
+                          settingsProvider.removeWaxLine('Swix');
+                          }
                         },
                       ),
                       FilterChip(
@@ -65,9 +69,13 @@ class Settings extends StatelessWidget {
                           'Toko',
                           style: TextStyle(color: Theme.of(context).accentColor),
                         ),
-                        selected: true,
+                        selected:  (settingsProvider.waxLines.contains('Toko')) ? true : false,
                         onSelected: (bool value){
-                          //TODO: Something here
+                          if (value == true){
+                            settingsProvider.addWaxLine('Toko');
+                          } else {
+                            settingsProvider.removeWaxLine('Toko');
+                          }
                         },
                       ),
                     ],

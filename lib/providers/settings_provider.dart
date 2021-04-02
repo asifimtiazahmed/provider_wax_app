@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsProvider with ChangeNotifier{
   String _units;
@@ -6,7 +7,8 @@ class SettingsProvider with ChangeNotifier{
 
   SettingsProvider(){
     _units = "Imperial";
-    _waxLines = ['Swix','Toko'];
+    _waxLines = [];
+    loadPreferences();
   }
 
   //Getters
@@ -17,6 +19,7 @@ class SettingsProvider with ChangeNotifier{
   void setUnits(String units){
     _units = units;
     notifyListeners();
+    savePreferences();
   }
 
   void _setWaxLines(List<String> waxLines){
@@ -24,17 +27,34 @@ class SettingsProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  void addWaxLine(String waxLine){
-    if(_waxLines.contains(waxLine) == false){
+  void addWaxLine(String waxLine) {
+    if (_waxLines.contains(waxLine) == false) {
       _waxLines.add(waxLine);
       notifyListeners();
+      savePreferences();
     }
+  }
 
-    void removeWaxLine(String waxLine){
-      if(_waxLines.contains(waxLines)== true){
-        _waxLines.remove(waxLines);
-        notifyListeners();
-      }
-    }
+  void removeWaxLine(String waxLine){
+     if(_waxLines.contains(waxLine)== true){
+       _waxLines.remove(waxLine);
+       notifyListeners();
+       savePreferences();
+     }
+  }
+  // Create shared pref
+  savePreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('units', _units);
+    prefs.setStringList('waxLines', _waxLines);
+  }
+
+  loadPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String units = prefs.getString('units');
+    List<String> waxLines = prefs.getStringList('waxLines');
+
+    if(units != null) setUnits(units);
+    if(waxLines != null) _setWaxLines(waxLines);
   }
 }
