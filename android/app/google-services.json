@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "643989939378",
+    "project_id": "wax-tutorial",
+    "storage_bucket": "wax-tutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643989939378:android:5990e62ce045749aead5ab",
+        "android_client_info": {
+          "package_name": "com.weaveio.wax_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643989939378-30da6tvv4kfg8kmfp59nrvrlrfvpgldk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYde2n-NuScMOUKtcPychB3RGnkfYSbwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643989939378-30da6tvv4kfg8kmfp59nrvrlrfvpgldk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
