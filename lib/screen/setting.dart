@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/settings_provider.dart';
 
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var settingsProvider = Provider.of<SettingsProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -20,9 +23,9 @@ class Settings extends StatelessWidget {
               children: [
                 Text("Units"),
                 DropdownButton<String>(
-                  value: "Imperial",
+                  value: settingsProvider.units,
                   onChanged: (String value) {
-                    //TODO UPDATE Units
+                    settingsProvider.setUnits(value);
                   },
                   items: <String>['Imperial', 'Metric']
                       .map<DropdownMenuItem<String>>((String value) {
